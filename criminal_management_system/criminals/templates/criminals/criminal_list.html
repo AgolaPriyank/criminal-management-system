@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Criminal List</h2>
+        <a href="{% url 'criminal_create' %}" class="btn btn-success">Add New FRI</a>
+    </div>
+    
+    <table class="table table-striped table-hover shadow-lg">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Aadhaar Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for criminal in criminals %}
+            <tr>
+                <td>{{ criminal.id }}</td>
+                <td>{{ criminal.name }}</td>
+                <td>{{ criminal.age }}</td>
+                <td>{{ criminal.get_gender_display }}</td>
+                <td>{{ criminal.phone_number }}</td>
+                <td>{{ criminal.aadhaar_number }}</td>
+                <td>
+                    <a href="{% url 'criminal_detail' criminal.pk %}" class="btn btn-info btn-sm custom-view-btn">View</a>
+                    <a href="{% url 'criminal_update' criminal.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'criminal_delete' criminal.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .container {
+        max-width: 1200px;
+    }
+
+    h2 {
+        font-weight: 700;
+        color: #343a40;
+    }
+
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f8f9fa;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .table-dark {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+
+    /* Custom View Button with Bright White Text */
+    .custom-view-btn {
+        color: #FFFFFF !important;  /* Brightest white color */
+    }
+
+    /* Button Colors */
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    /* Small Buttons */
+    .btn-sm {
+        
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+</style>
+{% endblock %}
+
+

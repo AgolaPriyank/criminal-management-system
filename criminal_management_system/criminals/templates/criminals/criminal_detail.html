@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body p-4">
+            <h2 class="text-center mb-4">Criminal Details</h2>
+            <div class="row">
+                <!-- Criminal Photo -->
+                <div class="col-md-4 text-center mb-4">
+                    <img src="{{ criminal.photo.url }}" alt="Photo of {{ criminal.name }}" class="img-fluid rounded shadow">
+                </div>
+                <!-- Criminal Details -->
+                <div class="col-md-8">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Id:</strong> {{ criminal.id }}</li>
+                        <li class="list-group-item"><strong>Name:</strong> {{ criminal.name }}</li>
+                        <li class="list-group-item"><strong>Age:</strong> {{ criminal.age }}</li>
+                        <li class="list-group-item"><strong>Date of Birth:</strong> {{ criminal.date_of_birth }}</li>
+                        <li class="list-group-item"><strong>Gender:</strong> {{ criminal.get_gender_display }}</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{ criminal.address }}</li>
+                        <li class="list-group-item"><strong>City:</strong> {{ criminal.city }}</li>
+                        <li class="list-group-item"><strong>State:</strong> {{ criminal.state }}</li>
+                        <li class="list-group-item"><strong>Country:</strong> {{ criminal.country }}</li>
+                        <li class="list-group-item"><strong>Phone Number:</strong> {{ criminal.phone_number }}</li>
+                        <li class="list-group-item"><strong>Aadhaar Number:</strong> {{ criminal.aadhaar_number }}</li>
+                        <li class="list-group-item"><strong>Crime Description:</strong> {{ criminal.crime_description }}</li>
+                        <li class="list-group-item"><strong>Date of Crime:</strong> {{ criminal.date_of_crime }}</li>
+                        <li class="list-group-item"><strong>Arrest Date:</strong> {{ criminal.arrest_date }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add some custom styles for better layout and design -->
+<style>
+    .card {
+        border-radius: 15px;
+        border: 1px solid #e3e3e3;
+        background-color: #f9f9f9;
+    }
+
+    .card-body {
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-weight: 700;
+        color: #333;
+    }
+
+    /* Criminal photo styling */
+    img.img-fluid {
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    ul.list-group {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    ul.list-group li {
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        background-color: transparent;
+    }
+
+    ul.list-group li:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    ul.list-group li strong {
+        color: #007bff;
+    }
+</style>
+{% endblock %}
+
+

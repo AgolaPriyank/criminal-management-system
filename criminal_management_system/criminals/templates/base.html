@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom hover effect on the brand link */
+        .navbar-brand {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .navbar-brand:hover {
+            color: #ffc107 !important; /* Hover color: Bootstrap's warning color (gold) */
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        /* Adjust form search button */
+        .form-control {
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Search Button Styling */
+        .btn-outline-success {
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-outline-success:hover {
+            background-color: #198754;
+            color: white;
+        }
+
+        /* Custom styles for the navbar */
+        .navbar {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Logout button custom styling */
+        .btn-outline-danger {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Login button styling */
+        .btn-outline-primary {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        /* Global container styling */
+        .container {
+            max-width: 1200px;
+        }
+
+        /* Mobile responsiveness adjustments */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+            <!-- Brand/Logo with hover effect -->
+            <a class="navbar-brand text-white" href="{% url 'criminal_list' %}">Criminal Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <form class="d-flex" method="get" action="{% url 'criminal_list' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search by ID" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger m-lg-3 text-white" href="{% url 'login' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary" href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

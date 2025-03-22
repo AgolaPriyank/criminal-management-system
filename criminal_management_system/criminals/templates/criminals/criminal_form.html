@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 100%; max-width: 700px;">
+        <div class="card-body p-5">
+            <h2 class="text-center mb-4">
+                {% if form.instance.pk %} Edit Criminal Details {% else %} Add Criminal Details {% endif %}
+            </h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary px-5 py-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* Form card styling */
+    .card {
+        border-radius: 15px;
+        background-color: #ffffff;
+        border: 1px solid #e3e3e3;
+    }
+
+    /* Form container and shadow */
+    .card-body {
+        background-color: #f8f9fa;
+        padding: 40px;
+        border-radius: 10px;
+    }
+
+    /* Styling for the heading */
+    .card h2 {
+        font-weight: 700;
+        color: #333;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Input fields styling */
+    input[type="text"], input[type="number"], input[type="file"], input[type="date"], textarea, select {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    /* Styling for submit button */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-size: 18px;
+        border-radius: 5px;
+        font-weight: 600;
+    }
+
+    /* Button hover effect */
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Custom form field labels */
+    label {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 3px; /* Less space between label and field */
+    }
+
+    /* Responsive container */
+    .container {
+        max-width: 700px;
+    }
+
+    /* Form field margins */
+    .form-control, .form-label {
+        margin-bottom: 10px; /* Adjusted spacing */
+    }
+
+    /* Custom form card shadow */
+    .card {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
+{% endblock %}
+
+
+
