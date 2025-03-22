@@ -17,7 +17,6 @@ The **Criminal Management System** is a web-based application designed to help l
 
 
 ## 💻 Installation & Setup
-### Backend (Django)
 ```bash
 # Clone the repository
 git clone https://github.com/AgolaPriyank/criminal-management-system.git
